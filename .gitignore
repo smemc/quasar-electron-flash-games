@@ -1,0 +1,25 @@
+.quasar
+.DS_Store
+.thumbs.db
+node_modules
+/dist
+/src-cordova/node_modules
+/src-cordova/platforms
+/src-cordova/plugins
+/src-cordova/www
+/src-electron/**/manifest.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.dll
+*.plugin
+*.so
+*.swf
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

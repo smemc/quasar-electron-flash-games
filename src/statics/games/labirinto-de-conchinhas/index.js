@@ -1,0 +1,14 @@
+export default {
+  title: 'Labirinto de Conchinhas',
+  description: [
+    'Ajude o menino a catar todas as conchinhas do labirinto!',
+    'Utilize as setas do seu teclado para movê-lo.',
+    'Tome cuidado com os caranguejos!'
+  ],
+  url: 'http://cr.i.uol.com.br/jogos/swf/labirinto-de-conchinhas.swf',
+  width: 598,
+  height: 350,
+  keywords: {
+    skills: ['Jogo estilo Pac-Man', 'Labirinto']
+  }
+}

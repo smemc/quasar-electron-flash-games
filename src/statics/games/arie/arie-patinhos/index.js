@@ -1,0 +1,15 @@
+export default {
+  coverImage: 'cover.jpg',
+  title: 'Ariê e os Patinhos',
+  description: [
+    'Acerte os patinhos na ordem certa para formar as letras do alfabeto. Além dos patinhos com as letras, algumas surpresas deixam o jogo ainda mais divertido.',
+    'Termine no menor tempo e bata seu recorde!',
+    'Brinque aprendendo o alfabeto, e divirta-se!'
+  ],
+  url: 'http://www.brincandocomarie.com.br/arie-patinhos/arie-patinhos.swf',
+  width: 1280,
+  height: 768,
+  keywords: {
+    language: ['Alfabeto']
+  }
+}

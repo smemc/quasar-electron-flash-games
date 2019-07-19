@@ -1,0 +1,16 @@
+export default {
+  title: 'Brincando com Ariê 3: Na Ilha da Aventura',
+  description: [
+    'Ariê está na Ilha da Aventura com três novos jogos educativos.',
+    'Na praia, a brincadeira é desenterrar os objetos da areia, achando seus nomes em um caça-palavras. Na ponte, para atravessar de uma lado para o outro, é preciso formar as palavras usando as sílabas. E o terceiro desafio é ajudar a joaninha a achar as letras em um labirinto nas ruínas da cidade perdida.',
+    'Os jogos têm o objetivo de ajudar na alfabetização de forma lúdica e divertida. São mais de 150 palavras e ilustrações de objetos.',
+    'O leãozinho Ariê é o guia nas brincadeiras e, ao completar cada aventura, você ganha uma medalha!'
+  ],
+  url: 'http://www.brincandocomarie.com.br/arie-3/arie-3.swf',
+  width: 1280,
+  height: 768,
+  keywords: {
+    skills: ['Caça-palavras', 'Labirinto'],
+    language: ['Palavras', 'Sílabas']
+  }
+}
