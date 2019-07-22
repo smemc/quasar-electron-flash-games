@@ -691,12 +691,7 @@ const getGameFromModule = (gameModule: string): Game => {
     ...game,
     gamePath,
     slug: path.basename(gameDir),
-    screenshots,
-    coverImage: game.coverImage
-      ? path.join('statics', gameDir, game.coverImage)
-      : screenshots.length > 0
-        ? screenshots[0]
-        : ''
+    screenshots
   }
 }
 

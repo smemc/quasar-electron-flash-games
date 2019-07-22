@@ -3,7 +3,6 @@ export interface KeywordObject {
 }
 
 export interface Game {
-  coverImage?: string
   description: string[]
   gamePath?: string
   height: number

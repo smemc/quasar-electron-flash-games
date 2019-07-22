@@ -6,7 +6,7 @@
   >
     <QImg
       :ratio="16/10"
-      :src="game.coverImage"
+      :src="game.screenshots[0]"
     >
       <transition
         appear
