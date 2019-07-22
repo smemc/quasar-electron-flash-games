@@ -2,6 +2,12 @@
 
 SWF game directory built with Quasar Framework
 
+## Motivation
+
+With [Adobe Flash Player EOL](https://theblog.adobe.com/adobe-flash-update/) announced at the end of 2020, a huge number of SWF games and educational resources may be unplayable in almost all web browsers. Major web browsers are already progressively disabling Adobe Flash Player plugin support, making the usage of these games harder and harder.
+
+In order to provide a way to ensure the games will still be playable for some time after Flash Player EOL, we're developing this Electron-based SWF game browser with [Quasar Framework](https://quasar.dev). We're continously updating it, and we'll stick it in the latest supported Flash Player plugin and Electron releaeses after that EOL. It supports both online and offline games.
+
 ## Instructions
 
 1. Clone this repository.
