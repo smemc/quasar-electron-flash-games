@@ -38,7 +38,7 @@
                 :key="category"
                 header
               >
-                {{ translateCategory(category) }}
+                {{ category }}
               </QItemLabel>
 
               <QItem
@@ -71,7 +71,6 @@
 <script lang="ts">
 import { computed, createComponent } from 'vue-function-api'
 import Games from '../store/games'
-import { translateCategory } from '../store/utils/functions'
 
 export default createComponent({
   name: 'MaeSideMenu',
@@ -91,8 +90,7 @@ export default createComponent({
       categories,
       keywords,
       localOnly,
-      selectedKeywords,
-      translateCategory
+      selectedKeywords
     }
   }
 })

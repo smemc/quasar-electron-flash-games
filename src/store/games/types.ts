@@ -1,9 +1,5 @@
 export interface KeywordObject {
-  skills: string[]
-  themes: string[]
-  math: string[]
-  language: string[]
-  science: string[]
+  [category: string]: string[]
 }
 
 export interface Game {

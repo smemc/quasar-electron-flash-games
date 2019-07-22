@@ -12,7 +12,7 @@
                 :key="`${category}/${index}`"
                 class="q-mx-sm"
               >
-                {{ translateCategory(category) }}: {{ keyword }}
+                {{ category }}: {{ keyword }}
               </QChip>
             </template>
           </p>
@@ -80,7 +80,6 @@
 <script lang="ts">
 import { computed, createComponent, onMounted, value } from 'vue-function-api'
 import Games from '../store/games'
-import { translateCategory } from '../store/utils/functions'
 import MaeRemoteBadge from '../components/MaeRemoteBadge.vue'
 
 export default createComponent({
@@ -101,8 +100,7 @@ export default createComponent({
     return {
       game,
       slide,
-      isRemote,
-      translateCategory
+      isRemote
     }
   }
 })

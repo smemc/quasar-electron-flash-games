@@ -667,23 +667,6 @@ export const accentFold = (s: string): string => {
   return ret
 }
 
-export const translateCategory = (category: string): string => {
-  switch (category) {
-    case 'skills':
-      return 'Habilidades'
-    case 'themes':
-      return 'Temas'
-    case 'language':
-      return 'Língua Portuguesa'
-    case 'math':
-      return 'Matemática'
-    case 'science':
-      return 'Ciências Naturais e Sociais'
-    default:
-      return 'Desconhecida'
-  }
-}
-
 const getGamePath = (gameDir: string, gameFile?: string): string | undefined =>
   gameFile && fs.existsSync(path.join(__statics, gameDir, gameFile))
     ? path.join('statics', gameDir, gameFile)
@@ -695,7 +678,10 @@ const getGameScreenshots = (gameDir: string): string[] =>
     .map(imagePath => path.join('statics', imagePath))
 
 const getGameFromModule = (gameModule: string): Game => {
-  const game: Game = require(`../../statics/${gameModule}`).default
+  const buffer = fs.readFileSync(path.join(__statics, gameModule))
+
+  console.log(buffer.toString())
+  const game: Game = JSON.parse(buffer.toString())
   const gameDir = path.dirname(gameModule)
   const gameFile = game.url ? path.basename(game.url) : undefined
   const gamePath = getGamePath(gameDir, gameFile)
@@ -715,6 +701,6 @@ const getGameFromModule = (gameModule: string): Game => {
 }
 
 export const getGames = (): Game[] =>
-  glob.sync('games/**/index.js', { cwd: __statics })
+  glob.sync('games/**/game.json', { cwd: __statics })
     .map(getGameFromModule)
     .filter(game => game.gamePath || game.url)

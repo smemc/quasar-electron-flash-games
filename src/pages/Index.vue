@@ -31,7 +31,6 @@ import {
   computed
 } from 'vue-function-api'
 import Games from '../store/games'
-import { translateCategory } from '../store/utils/functions'
 import MaeGameCard from '../components/MaeGameCard.vue'
 import MaeSideMenu from '../components/MaeSideMenu.vue'
 
@@ -60,8 +59,7 @@ export default createComponent({
       cardWidth,
       updateSubtitle,
       games,
-      filteredGames,
-      translateCategory
+      filteredGames
     }
   }
 })

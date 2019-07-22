@@ -8,13 +8,7 @@ const GAME_SKEL: Game = {
   height: 1,
   slug: '__SKEL_SLUG__',
   screenshots: [],
-  keywords: {
-    skills: [],
-    themes: [],
-    math: [],
-    language: [],
-    science: []
-  },
+  keywords: { '__SKEL_CATEGORY__': ['__SKEL_KEYWORD__'] },
   title: '__SKEL_TITLE__',
   width: 1
 }
