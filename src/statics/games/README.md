@@ -17,7 +17,7 @@ Under each game directory, you should put the following contents:
 - `width`/`height` _**(number)**_: nominal width/height of the game, as given by [this procedure](#how-to-obtain-nominal-width-height-from-a-games-swf).
 - `keywords` _**(object< string, array< string > >)**_: list of keywords used for filtering games at home page; each key of the object corresponds to a category (e.g. "Skills", "Math", "Language", "Science", "Themes", etc), and its value is an array of the keywords under this category.
 
-## How to obtain better game screenshots?
+## How to obtain better game screenshots
 
 We strongly reccomemend the following conventions for screenshots' dimensions:
 
