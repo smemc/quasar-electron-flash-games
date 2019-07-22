@@ -66,7 +66,7 @@ export default createComponent({
     })
 
     onMounted(() => {
-      Games.setSubtitle(`Jogando "${game.value.title}"`)
+      Games.setSubtitle(`Now playing "${game.value.title}"`)
     })
 
     return {

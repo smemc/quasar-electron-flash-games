@@ -94,7 +94,7 @@ export default createComponent({
     const isRemote = computed(() => !game.value.gamePath)
 
     onMounted(() => {
-      Games.setSubtitle(`Informações sobre o jogo "${game.value.title}"`)
+      Games.setSubtitle(`Info about game "${game.value.title}"`)
     })
 
     return {

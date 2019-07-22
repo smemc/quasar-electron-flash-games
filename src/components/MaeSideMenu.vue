@@ -8,7 +8,7 @@
         <QItem>
           <QToggle
             v-model="localOnly"
-            label="Apenas atividades locais"
+            label="Hide online games"
           />
         </QItem>
 
@@ -18,7 +18,7 @@
             push
             color="negative"
             icon="clear"
-            label="Limpar seleção"
+            label="Clear selection"
             @click="selectedKeywords = []"
           />
         </QItem>

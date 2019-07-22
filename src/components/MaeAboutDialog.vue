@@ -6,20 +6,20 @@
   >
     <QCard>
       <QCardSection>
-        <span class="text-h6">Sobre o {{ appName }}</span>
+        <span class="text-h6">About {{ appName }}</span>
       </QCardSection>
 
       <QCardSection>
-        <p>Versão {{ appVersion }}</p>
+        <p>Version {{ appVersion }}</p>
 
-        <p>Desenvolvido pela Equipe de Orientadores de Informática</p>
+        <p>Developed by Orientadores de Informática</p>
 
         <p>© 2019 Prefeitura de Mogi das Cruzes - SP</p>
 
         <p>
-          Feito com
+          Made with
           <QIcon name="favorite"/>
-          e Quasar Framework v{{ $q.version }}
+          and Quasar Framework v{{ $q.version }}
         </p>
       </QCardSection>
 

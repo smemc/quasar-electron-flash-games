@@ -40,7 +40,7 @@
         class="full-width"
         icon="videogame_asset"
         color="positive"
-        label="Jogar"
+        label="Play"
         @click="$router.push(`/game/${game.slug}`)"
       >
         <MaeRemoteBadge v-if="!game.gamePath"/>

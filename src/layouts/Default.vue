@@ -19,7 +19,7 @@
           dense
           standout
           autofocus
-          label="Pesquisar atividades"
+          label="Search games"
         >
           <template #append>
             <QIcon
@@ -47,21 +47,21 @@
           <QBtn
             v-if="$route.path.includes('/game')"
             icon="replay"
-            label="Recomeçar"
+            label="Replay"
             @click="$router.replace({ path: $route.path, query: { reload: Math.random() } })"
           />
 
           <QBtn
             v-if="$route.path !== '/'"
             icon="home"
-            label="Voltar"
+            label="Home"
             @click="$router.push('/')"
           />
 
           <QBtn
             v-else
             icon="info"
-            label="Sobre"
+            label="About"
             @click="aboutDialog = true"
           />
 
