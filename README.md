@@ -14,7 +14,7 @@ SWF game directory built with Quasar Framework
    - `linux/ia32` for 32-bit Linux
    - `win32/x64` for 64-bit Windows
    - `win32/ia32` for 32-bit Windows
-5. Add new games to directory `src/statics/games`. See [Game File Structure]() for more info.
+5. Add new games to directory `src/statics/games`. See [Game File Structure](/src/statics/games/README.md) for more info.
 6. Run `npx quasar dev -m electron` to run in development mode.
    - You can omit `npx` if you have `@quasar/cli` installed globally in your system.
 7. When you're done, run `npx quasar build -m electron` to build final package.
