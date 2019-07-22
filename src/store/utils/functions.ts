@@ -679,8 +679,6 @@ const getGameScreenshots = (gameDir: string): string[] =>
 
 const getGameFromModule = (gameModule: string): Game => {
   const buffer = fs.readFileSync(path.join(__statics, gameModule))
-
-  console.log(buffer.toString())
   const game: Game = JSON.parse(buffer.toString())
   const gameDir = path.dirname(gameModule)
   const gameFile = game.url ? path.basename(game.url) : undefined
