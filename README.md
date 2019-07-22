@@ -7,7 +7,7 @@ SWF game directory built with Quasar Framework
 1. Clone this repository.
 2. Go to directory `quasar-electron-flash-games`.
 3. Run `npm install`.
-4. Download [Adobe Flash Player](https://get.adobe.com/br/flashplayer/) for your OS and architecture, and extract plugin binary file with its `manifest.json` file to appropriate directory under `src-electron/ppapi-flash-plugin`:
+4. Download [Adobe Flash Player](https://get.adobe.com/br/flashplayer/) for your OS and architecture, and extract plugin with its `manifest.json` to appropriate directory under `src-electron/ppapi-flash-plugin`:
    - `darwin/x64` for 64-bit macOS
      - There's no 32-bit macOS since "Lion" release.
    - `linux/x64` for 64-bit Linux
