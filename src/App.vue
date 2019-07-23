@@ -5,9 +5,13 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from 'vue-function-api'
+import { createComponent, onCreated } from 'vue-function-api'
+import Games from './store/games'
 
 export default createComponent({
-  name: 'App'
+  name: 'App',
+  setup () {
+    onCreated(() => Games.init())
+  }
 })
 </script>

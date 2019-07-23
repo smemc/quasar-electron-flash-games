@@ -1,5 +1,5 @@
 import * as path from 'path'
-import * as glob from 'glob'
+import * as nodeGlob from 'glob'
 import * as fs from 'fs'
 import { Game } from '../games/types'
 
@@ -667,23 +667,84 @@ export const accentFold = (s: string): string => {
   return ret
 }
 
-const getGamePath = (gameDir: string, gameFile?: string): string | undefined =>
-  gameFile && fs.existsSync(path.join(__statics, gameDir, gameFile))
-    ? path.join('statics', gameDir, gameFile)
-    : glob.sync(`${gameDir}/*.swf`, { cwd: __statics })
-      .map(gamePath => path.join('statics', gamePath))[0]
+const stat = (path: fs.PathLike): Promise<fs.Stats> =>
+  new Promise((resolve, reject) => {
+    fs.stat(path, (error, stats) => {
+      if (error) {
+        reject(error)
 
-const getGameScreenshots = (gameDir: string): string[] =>
-  glob.sync(`${gameDir}/screenshots/*`, { cwd: __statics })
-    .map(imagePath => path.join('statics', imagePath))
+        return
+      }
 
-const getGameFromModule = (gameModule: string): Game => {
-  const buffer = fs.readFileSync(path.join(__statics, gameModule))
+      resolve(stats)
+    })
+  })
+
+const readFile = (path: fs.PathLike): Promise<Buffer> =>
+  new Promise((resolve, reject) => {
+    fs.readFile(path, (error, buffer) => {
+      if (error) {
+        reject(error)
+
+        return
+      }
+
+      resolve(buffer)
+    })
+  })
+
+const glob = (pattern: string, options: nodeGlob.IOptions): Promise<string[]> =>
+  new Promise((resolve, reject) => {
+    nodeGlob(pattern, options, (error, matches) => {
+      if (error) {
+        reject(error)
+
+        return
+      }
+
+      resolve(matches)
+    })
+  })
+
+const getGamePath = async (gameDir: string, gameFile?: string): Promise<string> => {
+  if (gameFile) {
+    try {
+      const stats = await stat(path.join(__statics, gameDir, gameFile))
+
+      if (stats.isFile()) {
+        return path.join('statics', gameDir, gameFile)
+      }
+    } catch (error) {
+      return ''
+    }
+  }
+
+  try {
+    const matches = await glob(`${gameDir}/*.swf`, { cwd: __statics })
+
+    return path.join('statics', matches[0])
+  } catch (error) {
+    return ''
+  }
+}
+
+const getGameScreenshots = async (gameDir: string): Promise<string[]> => {
+  try {
+    const matches = await glob(`${gameDir}/screenshots/*`, { cwd: __statics })
+
+    return matches.map(imagePath => path.join('statics', imagePath))
+  } catch (error) {
+    return []
+  }
+}
+
+const getGameFromModule = async (gameModule: string): Promise<Game> => {
+  const buffer = await readFile(path.join(__statics, gameModule))
   const game: Game = JSON.parse(buffer.toString())
   const gameDir = path.dirname(gameModule)
   const gameFile = game.url ? path.basename(game.url) : undefined
-  const gamePath = getGamePath(gameDir, gameFile)
-  const screenshots = getGameScreenshots(gameDir)
+  const gamePath = await getGamePath(gameDir, gameFile)
+  const screenshots = await getGameScreenshots(gameDir)
 
   return {
     ...game,
@@ -693,7 +754,21 @@ const getGameFromModule = (gameModule: string): Game => {
   }
 }
 
-export const getGames = (): Game[] =>
-  glob.sync('games/**/game.json', { cwd: __statics })
-    .map(getGameFromModule)
-    .filter(game => game.gamePath || game.url)
+export const getGames = async (): Promise<Promise<Game>[]> => {
+  try {
+    const matches = await glob('games/**/game.json', { cwd: __statics })
+
+    return matches.map(getGameFromModule)
+      .filter(async gamePromise => {
+        try {
+          const game = await gamePromise
+
+          return game.gamePath || game.url
+        } catch (error) {
+          return false
+        }
+      })
+  } catch (error) {
+    return []
+  }
+}

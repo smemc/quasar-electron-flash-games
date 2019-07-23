@@ -20,11 +20,16 @@ const GAME_SKEL: Game = {
   name: 'games'
 })
 export class GamesModule extends VuexModule {
-  private _games: Game[] = getGames()
+  private _games: Game[] = []
   private _selectedKeywords: string[] = []
   private _search: string = ''
   private _subtitle: string = ''
   private _localOnly: boolean = false
+
+  @Mutation
+  private ADD_GAME (payload: Game): void {
+    this._games.push(payload)
+  }
 
   @Mutation
   private SELECT_KEYWORDS (payload: string[]): void {
@@ -44,6 +49,17 @@ export class GamesModule extends VuexModule {
   @Mutation
   private SET_LOCAL_ONLY (payload: boolean): void {
     this._localOnly = payload
+  }
+
+  @Action
+  public async init (): Promise<void> {
+    const allGamePromises = await getGames()
+
+    allGamePromises.forEach(async gamePromise => {
+      const game = await gamePromise
+
+      this.ADD_GAME(game)
+    })
   }
 
   @Action
