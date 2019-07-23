@@ -13,6 +13,16 @@
         </QItem>
 
         <QItem>
+          <QSelect
+            v-model="perPage"
+            :options="perPageOptions"
+            label="Games per page"
+            class="full-width"
+            outlined
+          />
+        </QItem>
+
+        <QItem>
           <QToggle
             v-model="showRemoteGames"
             label="Show online games"
@@ -25,7 +35,7 @@
             push
             color="negative"
             icon="clear"
-            label="Limpar seleção"
+            label="Clear selection"
             @click="selectedKeywords = []"
           />
         </QItem>
@@ -70,12 +80,13 @@
 </template>
 
 <script lang="ts">
-import { computed, createComponent } from 'vue-function-api'
+import { computed, createComponent, value } from 'vue-function-api'
 import Games from '../store/games'
 
 export default createComponent({
   name: 'MaeSideMenu',
   setup () {
+    const perPageOptions = value([10, 15, 20, 40])
     const categories = computed(() => Games.categories)
     const keywords = computed(() => Games.keywords)
     const showRemoteGames = computed(
@@ -97,6 +108,7 @@ export default createComponent({
     const lastPage = computed(() => Games.lastPage)
 
     return {
+      perPageOptions,
       categories,
       keywords,
       showRemoteGames,
