@@ -57,6 +57,7 @@ module.exports = function (ctx) {
         'QPage',
         'QPageContainer',
         'QPageSticky',
+        'QPagination',
         'QScrollArea',
         'QSeparator',
         'QSpace',
@@ -189,7 +190,7 @@ module.exports = function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'com.example.app',
+        appId: 'br.gov.sp.mogidascruzes.educacao.mae',
         extraResources: [
           {
             // eslint-disable-next-line no-template-curly-in-string
@@ -214,10 +215,10 @@ module.exports = function (ctx) {
         },
         linux: {
           category: 'Education',
-          executableName: 'quasar-flash-games',
+          executableName: 'mae',
           packageCategory: 'education',
-          synopsis: 'SWF game directory',
-          vendor: 'Laércio de Sousa',
+          synopsis: 'Repositório de jogos SWF e HTML5',
+          vendor: 'Prefeitura de Mogi das Cruzes-SP',
           target: [
             'AppImage',
             'deb'

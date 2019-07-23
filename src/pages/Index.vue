@@ -9,7 +9,7 @@
         <QScrollArea class="fit">
           <div class="q-pa-md row justify-around items-stretch q-gutter-md">
             <MaeGameCard
-              v-for="game in filteredGames"
+              v-for="game in paginatedGames"
               :key="game.slug"
               class="q-ma-sm"
               :game="game"
@@ -45,6 +45,8 @@ export default createComponent({
 
     const games = computed(() => Games.games)
     const filteredGames = computed(() => Games.filteredGames)
+    const currentPage = computed(() => Games.currentPage)
+    const paginatedGames = computed(() => Games.paginatedGames)
 
     const updateSubtitle = () => {
       Games.setSubtitle(
@@ -57,9 +59,11 @@ export default createComponent({
 
     return {
       cardWidth,
+      currentPage,
       updateSubtitle,
       games,
-      filteredGames
+      filteredGames,
+      paginatedGames
     }
   }
 })

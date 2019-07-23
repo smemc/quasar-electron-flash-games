@@ -2,6 +2,16 @@
   <QList class="fit">
     <div class="column fit">
       <div class="col-auto">
+        <QItem class="justify-center">
+          <QPagination
+            v-model="currentPage"
+            :max="lastPage"
+            :max-pages="5"
+            boundary-links
+            direction-links
+          />
+        </QItem>
+
         <QItem>
           <QToggle
             v-model="localOnly"
@@ -76,12 +86,24 @@ export default createComponent({
       () => Games.selectedKeywords,
       value => Games.selectKeywords(value)
     )
+    const currentPage = computed(
+      () => Games.currentPage,
+      value => Games.setCurrentPage(value)
+    )
+    const perPage = computed(
+      () => Games.perPage,
+      value => Games.setPerPage(value)
+    )
+    const lastPage = computed(() => Games.lastPage)
 
     return {
       categories,
       keywords,
       localOnly,
-      selectedKeywords
+      selectedKeywords,
+      currentPage,
+      perPage,
+      lastPage
     }
   }
 })

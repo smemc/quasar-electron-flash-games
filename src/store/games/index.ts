@@ -25,6 +25,8 @@ export class GamesModule extends VuexModule {
   private _search: string = ''
   private _subtitle: string = ''
   private _localOnly: boolean = false
+  private _currentPage = 1
+  private _perPage = 20
 
   @Mutation
   private ADD_GAME (payload: Game): void {
@@ -49,6 +51,16 @@ export class GamesModule extends VuexModule {
   @Mutation
   private SET_LOCAL_ONLY (payload: boolean): void {
     this._localOnly = payload
+  }
+
+  @Mutation
+  private SET_CURRENT_PAGE (payload: number): void {
+    this._currentPage = payload
+  }
+
+  @Mutation
+  private SET_PER_PAGE (payload: number): void {
+    this._perPage = payload
   }
 
   @Action
@@ -80,6 +92,16 @@ export class GamesModule extends VuexModule {
   @Action
   public async setLocalOnly (payload: boolean): Promise<void> {
     this.SET_LOCAL_ONLY(payload)
+  }
+
+  @Action
+  public async setCurrentPage (payload: number): Promise<void> {
+    this.SET_CURRENT_PAGE(payload)
+  }
+
+  @Action
+  public async setPerPage (payload: number): Promise<void> {
+    this.SET_PER_PAGE(payload)
   }
 
   public get games (): Game[] {
@@ -159,6 +181,24 @@ export class GamesModule extends VuexModule {
         (filteredGames: Game[], game) => [...filteredGames, game],
         []
       )
+  }
+
+  public get currentPage (): number {
+    return this._currentPage
+  }
+
+  public get perPage (): number {
+    return this._perPage
+  }
+
+  public get lastPage (): number {
+    return Math.ceil(this.filteredGames.length / this._perPage)
+  }
+
+  public get paginatedGames (): Game[] {
+    const offset = (this._currentPage - 1) * this._perPage
+
+    return this.filteredGames.slice(offset).slice(0, this._perPage)
   }
 }
 
