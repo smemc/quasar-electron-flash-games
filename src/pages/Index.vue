@@ -50,7 +50,7 @@ export default createComponent({
 
     const updateSubtitle = () => {
       Games.setSubtitle(
-        `Atividades selecionadas: ${Games.filteredGames.length} de ${Games.games.length}`
+        `Now showing ${Games.filteredGames.length} of ${Games.games.length} games`
       )
     }
 
