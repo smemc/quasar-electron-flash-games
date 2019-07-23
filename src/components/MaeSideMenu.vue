@@ -14,8 +14,8 @@
 
         <QItem>
           <QToggle
-            v-model="localOnly"
-            label="Ocultar atividades online"
+            v-model="showRemoteGames"
+            label="Show online games"
           />
         </QItem>
 
@@ -78,9 +78,9 @@ export default createComponent({
   setup () {
     const categories = computed(() => Games.categories)
     const keywords = computed(() => Games.keywords)
-    const localOnly = computed(
-      () => Games.localOnly,
-      value => Games.setLocalOnly(value)
+    const showRemoteGames = computed(
+      () => Games.showRemoteGames,
+      value => Games.setShowRemoteGames(value)
     )
     const selectedKeywords = computed(
       () => Games.selectedKeywords,
@@ -99,7 +99,7 @@ export default createComponent({
     return {
       categories,
       keywords,
-      localOnly,
+      showRemoteGames,
       selectedKeywords,
       currentPage,
       perPage,

@@ -24,7 +24,7 @@ export class GamesModule extends VuexModule {
   private _selectedKeywords: string[] = []
   private _search: string = ''
   private _subtitle: string = ''
-  private _localOnly: boolean = false
+  private _showRemoteGames: boolean = false
   private _currentPage = 1
   private _perPage = 20
 
@@ -49,8 +49,8 @@ export class GamesModule extends VuexModule {
   }
 
   @Mutation
-  private SET_LOCAL_ONLY (payload: boolean): void {
-    this._localOnly = payload
+  private SET_SHOW_REMOTE_GAMES (payload: boolean): void {
+    this._showRemoteGames = payload
   }
 
   @Mutation
@@ -90,8 +90,8 @@ export class GamesModule extends VuexModule {
   }
 
   @Action
-  public async setLocalOnly (payload: boolean): Promise<void> {
-    this.SET_LOCAL_ONLY(payload)
+  public async setShowRemoteGames (payload: boolean): Promise<void> {
+    this.SET_SHOW_REMOTE_GAMES(payload)
   }
 
   @Action
@@ -156,8 +156,8 @@ export class GamesModule extends VuexModule {
     return this._subtitle
   }
 
-  public get localOnly (): boolean {
-    return this._localOnly
+  public get showRemoteGames (): boolean {
+    return this._showRemoteGames
   }
 
   public get getGameById () {
@@ -171,7 +171,7 @@ export class GamesModule extends VuexModule {
         accentFold(game.title.toLowerCase()).includes(
           accentFold(this._search.toLowerCase())
         ) &&
-            (this._localOnly ? game.gamePath : true) &&
+            (!this._showRemoteGames ? game.gamePath : true) &&
             (this._selectedKeywords.length === 0 ||
               this._selectedKeywords.some(keyword =>
                 Object.values(game.keywords).flat().includes(keyword)
