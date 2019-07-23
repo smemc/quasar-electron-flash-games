@@ -1,14 +1,11 @@
 <template>
-  <QList
-    class="fit"
-    bordered
-  >
+  <QList class="fit">
     <div class="column fit">
       <div class="col-auto">
         <QItem>
           <QToggle
             v-model="localOnly"
-            label="Hide online games"
+            label="Ocultar atividades online"
           />
         </QItem>
 
@@ -18,7 +15,7 @@
             push
             color="negative"
             icon="clear"
-            label="Clear selection"
+            label="Limpar seleção"
             @click="selectedKeywords = []"
           />
         </QItem>
@@ -27,13 +24,7 @@
       <div class="col column">
         <div class="col">
           <QScrollArea class="fit">
-            <template v-for="(category, index) in categories">
-              <QSeparator
-                v-if="index"
-                :key="`${category}.separator`"
-                spaced
-              />
-
+            <template v-for="category in categories">
               <QItemLabel
                 :key="category"
                 header
@@ -43,7 +34,7 @@
 
               <QItem
                 v-for="keyword in keywords[category]"
-                :key="keyword"
+                :key="`${category}.${keyword}`"
                 tag="label"
               >
                 <QItemSection
