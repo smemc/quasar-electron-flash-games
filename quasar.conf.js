@@ -191,11 +191,11 @@ module.exports = function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'br.gov.sp.mogidascruzes.educacao.mae',
+        appId: 'com.example.quasar-flash-games',
         extraResources: [
           {
             // eslint-disable-next-line no-template-curly-in-string
-            from: 'src-electron/ppapi-flash-plugin/${platform}/${arch}',
+            from: 'src-electron/ppapi-flash-plugin/${os}/${arch}',
             to: 'PepperFlash',
             filter: [
               '**/*'
@@ -216,10 +216,10 @@ module.exports = function (ctx) {
         },
         linux: {
           category: 'Education',
-          executableName: 'mae',
+          executableName: 'quasar-flash-games',
           packageCategory: 'education',
-          synopsis: 'Repositório de jogos SWF e HTML5',
-          vendor: 'Prefeitura de Mogi das Cruzes-SP',
+          synopsis: 'SWF game repository',
+          vendor: 'Laércio de Sousa',
           target: [
             'AppImage',
             'deb'
